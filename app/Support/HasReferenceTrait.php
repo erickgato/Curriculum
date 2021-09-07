@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 trait HasReferenceTrait {
 	protected Collection $references;
 
-	public function attachReferences(array $references = []): self {
+	public function attachReferences(array $references = []) {
 		$this->clearReferences();
 		foreach($references as $reference) {
 			$this->addReference($reference);
@@ -17,12 +17,12 @@ trait HasReferenceTrait {
 	}
 
 
-	private function clearReferences(): self {
+	private function clearReferences() {
 		$this->references = collect([]);
 		return $this;
 	}
 
-	public function addReference(ReferenceContract $reference): self {
+	public function addReference(ReferenceContract $reference) {
 		$this->references->push($reference);
 		return $this;
 	}

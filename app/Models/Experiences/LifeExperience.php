@@ -4,7 +4,8 @@ namespace App\Models\Experiences;
 use App\Contracts\ExperienceContract;
 use Illuminate\Database\Eloquent\Model;
 
-abstract class LifeExperience extends Model implements ExperienceContract {
+abstract class LifeExperience implements ExperienceContract {
+
 	protected string $title;
 	protected string $description;
 	protected string $startDate;
