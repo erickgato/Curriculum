@@ -1,5 +1,5 @@
 <?php
-namespace App\Models;
+namespace App\Models\Experiences;
 
 use App\Contracts\ExperienceContract;
 use Illuminate\Database\Eloquent\Model;

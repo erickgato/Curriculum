@@ -1,33 +1,26 @@
 <?php
 namespace App\Models;
 
-use Illuminate\Support\Collection;
+use App\Support\HasExperiencesTrait;
+use App\Support\HasReferenceTrait;
 
 class People {
-	public Collection $educations;
-	// protected $name;
-	// protected $bio;
-	// protected
+	use HasExperiencesTrait, HasReferenceTrait;
 
-	public function __construct(array $educations = []) {
-		$this->addManyEducations($educations);
+	protected string $name;
+	protected string $shortDescription;
+	protected string $bio;
+	protected string $avatar;
+
+	public function __construct(
+		string $name,
+		string $shortDescription,
+		string $bio,
+		string $avatar = "",
+	) {
+		$this->name = $name;
+		$this->shortDescription = $shortDescription;
+		$this->bio = $bio;
+		$this->avatar = $avatar;
 	}
-
-	public function addManyEducations(array $educations) {
-		$this->educations = collect($educations)->map(function ($education) {
-			if($education instanceOf Education == false) {
-				throw new \InvalidArgumentException(
-					"Please, provide valid education Instance"
-				);
-			}
-
-			return $education;
-		});
-	}
-
-	public function addEducation(Education $education): People {
-
-		return $this;
-	}
-
 }
