@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CurriculumGeneratorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('/curriculum')->name('curriculum.')->group(function () {
+	Route::get('/generate', [CurriculumGeneratorController::class, 'generate'])->name('generate');
 });
