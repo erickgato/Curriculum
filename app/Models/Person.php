@@ -5,7 +5,7 @@ use App\Support\HasExperiencesTrait;
 use App\Support\HasReferenceTrait;
 use Illuminate\Database\Eloquent\Model;
 
-final class People extends Model {
+final class Person extends Model {
 	use HasExperiencesTrait, HasReferenceTrait;
 
 	protected $fillable = [

@@ -8,13 +8,14 @@ use App\Models\References\HobbieReference;
 use App\Models\References\LanguageReference;
 use App\Models\References\SkillReference;
 use App\Models\References\SocialNetworkReference;
-use App\Services\PeopleService;
+use App\Services\DocumentGeneratorService;
+use App\Services\PersonService;
 
 class CurriculumGeneratorController extends Controller
 {
-	public function generate(PeopleService $peopleService)
+	public function generate(PersonService $personService, DocumentGeneratorService $generatorService)
 	{
-		$people = $peopleService->create([
+		$person = $personService->create([
 			'name' => "Erick de souza gato",
 			'shortDescription' => 'Desenvolvedor Full stack',
 			'bio' => "
@@ -44,5 +45,11 @@ class CurriculumGeneratorController extends Controller
 			],
 		]);
 
+
+		return
+			$generatorService
+				->usePerson($person)
+				->injectTemplate("templates.pink")
+				->generate();
 	}
 }
